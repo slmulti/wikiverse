@@ -11,7 +11,7 @@ export const Page = (props) => {
 
   const[FindAuthor, SetFindAuthor] = useState("")
 
-  const[tags, SetTags] = useState("")
+  const[tags, SetTags] = useState([])
   const[createdAt, SetCreatedAt] = useState("")
 
   const checkPages = props.pages.find(page => page.id == currentPage)
@@ -51,32 +51,25 @@ export const Page = (props) => {
   }
 
   const getTags = async () => {
-    const res = await fetch(`${apiURL}/wiki/${slug}/similar`)
-    const tagsData = await res.json()
-    console.log(currentPage)
+    const res = await fetch(`${apiURL}/wiki/${props.page.slug}`)
+    const articleWithTags = await res.json()
+    console.log(articleWithTags)
     // console.log(tagsData[0].createdAt)
     // console.log(tagsData[0].tags[0].name)
-    SetTags(tagsData[0].tags[0].name)
-    // SetCreatedAt(tagsData[0].createdAt)
+    SetTags(articleWithTags.tags)
+    console.log(articleWithTags.tags)
+    // SetCreatedAt(tagsData.createdAt)
 
   }
 
-  // const getCreatedAt = async () => {
-  //   const res = await fetch(`${apiURL}/wiki/${slug}/similar`)
-  //   const createdData = await res.json()
-  //   console.log(createdData)
-  //   SetCreatedAt(createdAt[0].createdAt)    
-  // }
-
-
-
   return <>
-    <div id="styleArticle">
+    <div  className="styleArticle">
       <h3>{props.page.title}</h3>
       {isClicked && <h4>Authors name: {FindAuthor}</h4>}
       {isClicked && <h5>{props.page.content}</h5>}
-      {isClicked && <h6>#tags: #{tags}</h6>}
-      {isClicked && <h6>Article Created: {createdAt}</h6>}
+      {isClicked && <h6>#tags:{" "}{tags.map((tag) => {
+        return `#${tag.name} `})}</h6>}
+      {isClicked && <h6>Article Created: {props.page.createdAt}</h6>}
 
       {/* <p>{article.map(article => {return article.content === article.id ? <div><p>article: {article.content}</p></div> : <div>display nothing</div>})}</p> */}
       {/* is this where we can get more content from props.page.content??? */}

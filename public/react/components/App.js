@@ -24,11 +24,15 @@ export const App = () => {
 	}, []);
 
 	return (
-		<main>	
+		<main >	
       <h1>WikiVerse</h1>
 			<h2>An interesting 📚</h2>
-			<PagesList pages={pages} />
-			<AddArticle/>
+			<div>
+				<PagesList pages={pages} />
+			</div>
+			<div  id="addArticle">
+				<AddArticle/>
+			</div>
 		</main>
 	)
 }

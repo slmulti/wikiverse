@@ -25,8 +25,8 @@ function AddArticle () {
 
   return (
 
-      <main>
-    <form onSubmit={handleSubmit}>
+      <main className="form">
+    <form onSubmit={handleSubmit} >
     <h2>Add an Article</h2>
       <p>Please enter your details</p>
       <label></label>
