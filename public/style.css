@@ -1,10 +1,36 @@
+/* Color Theme Swatches in Hex */
+.Fashion-1-hex { color: #2E3E40; }
+.Fashion-2-hex { color: #736F5A; }
+.Fashion-3-hex { color: #A65F37; }
+.Fashion-4-hex { color: #733A26; }
+.Fashion-5-hex { color: #F2F2F2; }
+
+/* Color Theme Swatches in RGBA */
+.Fashion-1-rgba { color: rgba(45, 61, 63, 1); }
+.Fashion-2-rgba { color: rgba(114, 110, 89, 1); }
+.Fashion-3-rgba { color: rgba(165, 95, 54, 1); }
+.Fashion-4-rgba { color: rgba(114, 58, 37, 1); }
+.Fashion-5-rgba { color: rgba(242, 242, 242, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Fashion-1-hsla { color: hsla(185, 16, 21, 1); }
+.Fashion-2-hsla { color: hsla(50, 12, 40, 1); }
+.Fashion-3-hsla { color: hsla(22, 50, 43, 1); }
+.Fashion-4-hsla { color: hsla(16, 50, 29, 1); }
+.Fashion-5-hsla { color: hsla(0, 0, 95, 1); }
+
+
 * {
   margin: 0;
   box-sizing: border-box;
-  background-color: rgb(223, 223, 223);
+  background-color: rgb(45, 61, 63, 1);
+  color:rgba(114, 110, 89, 1);
+  font-family: 'Poppins', sans-serif;
 }
 
 main {
   padding: 1rem;
   height: 100vh;
 }
+
+
