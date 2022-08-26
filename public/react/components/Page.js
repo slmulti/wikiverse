@@ -27,17 +27,19 @@ export const Page = (props) => {
     // console.log(articleData)
 	}
 
-  	useEffect(() =>{
+  useEffect(() =>{
 		getSingleArticle()
     getAuthor()
-    getTags()
-    // getCreatedAt()
+    
+    
 	}, [])
 
   const testButtonFunction = (e) => {
     console.log(e.target.value)
     setCurrentPage(e.target.value)
     setIsClicked(!isClicked)
+    getTags()
+    // getCreatedAt()
   }
 
   
@@ -51,11 +53,11 @@ export const Page = (props) => {
   const getTags = async () => {
     const res = await fetch(`${apiURL}/wiki/${slug}/similar`)
     const tagsData = await res.json()
-    console.log(tagsData)
+    console.log(currentPage)
     // console.log(tagsData[0].createdAt)
-    console.log(tagsData[0].tags[0].name)
+    // console.log(tagsData[0].tags[0].name)
     SetTags(tagsData[0].tags[0].name)
-    SetCreatedAt(tagsData[0].createdAt)
+    // SetCreatedAt(tagsData[0].createdAt)
 
   }
 
@@ -69,15 +71,17 @@ export const Page = (props) => {
 
 
   return <>
-    <h3>{props.page.title}</h3>
-    {isClicked && <h4>Authors name: {FindAuthor}</h4>}
-    {isClicked && <h5>{props.page.content}</h5>}
-    {isClicked && <h6>#tags: #{tags}</h6>}
-    {isClicked && <h6>Article Created:{createdAt}</h6>}
+    <div id="styleArticle">
+      <h3>{props.page.title}</h3>
+      {isClicked && <h4>Authors name: {FindAuthor}</h4>}
+      {isClicked && <h5>{props.page.content}</h5>}
+      {isClicked && <h6>#tags: #{tags}</h6>}
+      {isClicked && <h6>Article Created: {createdAt}</h6>}
 
-    {/* <p>{article.map(article => {return article.content === article.id ? <div><p>article: {article.content}</p></div> : <div>display nothing</div>})}</p> */}
-    {/* is this where we can get more content from props.page.content??? */}
-    <button value= {props.id} onClick={testButtonFunction}>{isClicked ? "Back to Wiki List" : "Find Out More..."}</button>
+      {/* <p>{article.map(article => {return article.content === article.id ? <div><p>article: {article.content}</p></div> : <div>display nothing</div>})}</p> */}
+      {/* is this where we can get more content from props.page.content??? */}
+      <button value= {props.id} onClick={testButtonFunction}>{isClicked ? "Back to Wiki List" : "Find Out More..."}</button>
+    </div>
   </>
 } 
 	

@@ -3,6 +3,7 @@ import { PagesList } from './PagesList';
 
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
+import AddArticle from './AddArticle';
 
 export const App = () => {
 
@@ -27,6 +28,7 @@ export const App = () => {
       <h1>WikiVerse</h1>
 			<h2>An interesting 📚</h2>
 			<PagesList pages={pages} />
+			<AddArticle/>
 		</main>
 	)
 }
